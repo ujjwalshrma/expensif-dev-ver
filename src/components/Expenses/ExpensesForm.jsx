@@ -1,5 +1,9 @@
+import styles from './ExpensesForm.module.css'
+
 import { useState } from "react"
 import { v4 as uuidv4 } from 'uuid';
+
+import Card from "../UI/Card/Card";
 
 const ExpensesForm = ({ addExpense, budgets }) => {
     const [expenseName, setExpenseName] = useState('')
@@ -26,22 +30,25 @@ const ExpensesForm = ({ addExpense, budgets }) => {
     }
 
     return (
-        <div>
-            <form onSubmit={onExpenseSubmit}>
+        <Card color="r" className={styles.expense__card}>
+            <h1 className={styles.expense__form__heading}>{
+                budgets.length > 1 ? `Add Expenses` : `Add Expense To ${budgets[0].bName}`
+            }</h1>
+            <form onSubmit={onExpenseSubmit} className={styles.expense__form}>
                 <input type="text" name="expense name" onChange={onExpenseNameChangeHandler} value={expenseName} placeholder="enter expense name" />
                 <input onChange={onExpenseAmountChangeHandler} value={expenseAmount} type="number" name="expense amount" placeholder="enter expense amount" />
                 {budgets.length > 1 &&
                     <select value={selectedBudget} onChange={e => setSelectedBudget(e.target.value)}>
                         {
                             budgets.map(budget => {
-                                return <option key={budget.bId} value={budget.bId}>{budget.bName}</option>
+                                return <option className={styles.budget__option} key={budget.bId} value={budget.bId}>{budget.bName}</option>
                             })
                         }
                     </select>
                 }
-                <button type="submit">add expense</button>
+                <button type="submit">Add Expense</button>
             </form>
-        </div>
+        </Card>
     )
 }
 

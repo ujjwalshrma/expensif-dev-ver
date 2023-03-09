@@ -15,14 +15,16 @@ function App() {
     const budgets = budgetCtx.budgets
 
     return (
-        <main>
+        <>
             <TotalExpense budgets={budgets} />
             <BudgetForm addBudget={budgetCtx.addBudget} />
-            {budgets.length > 0 && (
-                <ExpensesForm addExpense={budgetCtx.addExpense} budgets={budgets} />
-            )}
+            {
+                budgets.length > 0 && (
+                    <ExpensesForm addExpense={budgetCtx.addExpense} budgets={budgets} />
+                )
+            }
             <Budget budgets={budgets} removeBudget={budgetCtx.removeBudget} removeExpense={budgetCtx.removeExpense} />
-        </main>
+        </>
     )
 }
 

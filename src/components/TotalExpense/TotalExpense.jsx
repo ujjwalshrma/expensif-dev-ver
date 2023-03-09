@@ -1,3 +1,5 @@
+import Card from "../UI/Card/Card"
+
 const TotalExpense = ({ budgets }) => {
     let totalExpense = 0
 
@@ -10,9 +12,10 @@ const TotalExpense = ({ budgets }) => {
 
 
     return (
-        <div>
-            <h1>Total Expense: {totalExpense}</h1>
-        </div>
+        <Card flex='flex-h'>
+            <h1>Total Expense</h1>
+            <h1>Rs. {totalExpense}</h1>
+        </Card>
     )
 }
 

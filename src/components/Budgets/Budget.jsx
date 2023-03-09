@@ -1,4 +1,7 @@
+import styles from './Budget.module.css'
+
 import Expense from "../Expenses/Expense"
+import Card from "../UI/Card/Card"
 
 
 const Budget = ({ budgets, removeBudget, removeExpense }) => {
@@ -6,12 +9,16 @@ const Budget = ({ budgets, removeBudget, removeExpense }) => {
     return (budgets.map(budget => {
         return (
             <div key={budget.bId}>
-                <p>budget name: {budget.bName}</p>
-                <p>budget amount: {budget.bAmount}</p>
-                {budgets && (
-                    <Expense budget={budget} removeExpense={removeExpense} />
-                )}
-                <button onClick={() => { removeBudget(budget.bId) }} >remove {budget.bName}</button>
+                <Card color='t' className={styles.budget__card}>
+                    <div className={styles.budget__heading__wrapper}>
+                        <h1>{budget.bName}</h1>
+                        <h1>Rs. {budget.bAmount}</h1>
+                    </div>
+                    {budgets && (
+                        <Expense budget={budget} removeExpense={removeExpense} />
+                    )}
+                    <button onClick={() => { removeBudget(budget.bId) }} >Remove {budget.bName}</button>
+                </Card>
             </div>
         )
     })

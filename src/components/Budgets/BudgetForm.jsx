@@ -1,5 +1,8 @@
+import styles from './BudgetForm.module.css'
 import { useState } from "react"
 import { v4 as uuidv4 } from 'uuid';
+
+import Card from "../UI/Card/Card";
 
 const BudgetForm = ({ addBudget }) => {
 
@@ -28,11 +31,14 @@ const BudgetForm = ({ addBudget }) => {
     }
 
     return (
-        <form onSubmit={onBudgetSubmit}>
-            <input type="text" name="budget name" onChange={onBudgetNameChangeHandler} value={budgetName} placeholder="enter budget name" />
-            <input onChange={onBudgetAmountChangeHandler} value={budgetAmount} type="number" name="budget amount" placeholder="enter budget amount" />
-            <button type="submit">add budget</button>
-        </form>
+        <Card color='g' className={styles.budget__card}>
+            <h1 className={styles.budget__form__heading}>Create Budget</h1>
+            <form onSubmit={onBudgetSubmit} className={styles.budget__form}>
+                <input type="text" name="budget name" onChange={onBudgetNameChangeHandler} value={budgetName} placeholder="Budget Name" />
+                <input onChange={onBudgetAmountChangeHandler} min='0' value={budgetAmount} type="number" name="budget amount" placeholder="enter budget amount" />
+                <button type="submit">Add Budget</button>
+            </form>
+        </Card>
     )
 }
 

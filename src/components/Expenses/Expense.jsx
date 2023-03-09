@@ -3,7 +3,7 @@ import Card from "../UI/Card/Card"
 const Expense = ({ budget, removeExpense }) => {
     return (
         budget.expenses.map((expense) => (
-            <Card>
+            <Card key={expense.eId}>
                 <div key={expense.eId}>
                     <p>expense name: {expense.eName}</p>
                     <p>expense amount: {expense.eAmount}</p>

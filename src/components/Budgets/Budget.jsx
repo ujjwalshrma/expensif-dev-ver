@@ -2,6 +2,7 @@ import styles from './Budget.module.css'
 
 import Expense from "../Expenses/Expense"
 import Card from "../UI/Card/Card"
+import ProgressBar from '../UI/ProgressBar/ProgressBar'
 
 
 const Budget = ({ budgets, removeBudget, removeExpense }) => {
@@ -14,6 +15,7 @@ const Budget = ({ budgets, removeBudget, removeExpense }) => {
                         <h1>{budget.bName}</h1>
                         <h1>Rs. {budget.bAmount}</h1>
                     </div>
+                    <ProgressBar budget={budget} />
                     {budgets && (
                         <Expense budget={budget} removeExpense={removeExpense} />
                     )}

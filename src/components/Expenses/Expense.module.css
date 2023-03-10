@@ -1,0 +1,22 @@
+.expense {
+    width: 100%;
+}
+
+.expense__card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+}
+
+.expense__inner__card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.delete__icon {
+    padding: 5px 15px;
+}
+ 

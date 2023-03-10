@@ -19,7 +19,7 @@ const Budget = ({ budgets, removeBudget, removeExpense }) => {
                     {budgets && (
                         <Expense budget={budget} removeExpense={removeExpense} />
                     )}
-                    <button onClick={() => { removeBudget(budget.bId) }} >Remove {budget.bName}</button>
+                    <button className={styles.remove__budget__btn} onClick={() => { removeBudget(budget.bId) }} >Remove {budget.bName} Budget</button>
                 </Card>
             </div>
         )

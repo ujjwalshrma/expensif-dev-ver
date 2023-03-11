@@ -1,0 +1,29 @@
+.name__form__card {
+    padding: 24px;
+    margin: 5px;
+    background: #444;
+    border-radius: 40px;
+    border: 1px solid #777;
+    margin-top: 20px;
+} 
+
+.form__input__label {
+    font-size: 20px;
+}
+
+.input {
+    margin: 20px 0px;
+    width: 93%;
+}
+
+.logo__wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 150px;
+}
+
+.logo {
+    width: 100px;
+}

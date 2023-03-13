@@ -12,12 +12,17 @@ import Budget from "./components/Budgets/Budget";
 //expenses components
 import ExpensesForm from "./components/Expenses/ExpensesForm";
 
+//auto animate
+import { useAutoAnimate } from '@formkit/auto-animate/react'
+
 function App() {
     const [isEnteredNameValid, setIsEnteredNameValid] = useState(false)
     const [userName, setUserName] = useState('')
 
     const budgetCtx = useContext(budgetContext)
     const budgets = budgetCtx.budgets
+
+    const [expenseFormRef] = useAutoAnimate()
 
     const checkEnteredName = (name) => {
         if (name.trim('') !== '') {
@@ -38,11 +43,14 @@ function App() {
             <h1 className='user-name'>Hi👋, {userName}</h1>
             <TotalExpense budgets={budgets} />
             <BudgetForm addBudget={budgetCtx.addBudget} />
-            {
-                budgets.length > 0 && (
-                    <ExpensesForm addExpense={budgetCtx.addExpense} budgets={budgets} />
-                )
-            }
+            <div ref={expenseFormRef}>
+
+                {
+                    budgets.length > 0 && (
+                        <ExpensesForm addExpense={budgetCtx.addExpense} budgets={budgets} />
+                    )
+                }
+            </div>
             <Budget budgets={budgets} removeBudget={budgetCtx.removeBudget} removeExpense={budgetCtx.removeExpense} />
         </>
     )

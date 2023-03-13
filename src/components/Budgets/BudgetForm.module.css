@@ -19,11 +19,12 @@
     height: 35px;
     overflow: hidden;
     transition: all 0.5s ease-in-out;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .accordian.open {
     height: 280px;
+    margin-bottom: 0px;
 }
 
 .plus {

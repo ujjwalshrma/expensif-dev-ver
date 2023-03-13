@@ -2,6 +2,10 @@
     width: 100%;
 }
 
+.expenses__wrapper {
+    width: 100%;
+}
+
 .expense__card {
     display: flex;
     align-items: center;

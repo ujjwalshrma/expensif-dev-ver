@@ -4,6 +4,7 @@ const ProgressBar = ({ budget }) => {
 
     let spentAmount = 0
     let remainingAmount = budget.bAmount
+    let oldPercentage = 0;
 
     budget.expenses.map(exp => {
         return spentAmount += exp.eAmount
@@ -16,14 +17,20 @@ const ProgressBar = ({ budget }) => {
     }
 
     if (percentage >= 100) {
+        oldPercentage = percentage
         percentage = 100
     }
+
+    const innerProgressBarClass = `${styles.inner__bar} ${oldPercentage > 100 ? styles.exceeded : ''}`
 
 
     return (
         <>
+            {oldPercentage > 100 &&
+                <p className={styles.error}>You've Exceeded the budget!</p>
+            }
             <div className={styles.outer__bar}>
-                <div className={styles.inner__bar} style={{ width: `${percentage}%` }} />
+                <div className={innerProgressBarClass} style={{ width: `${percentage}%` }} />
             </div>
             <div className={styles.progress__amount}>
                 <p className='small'>Rs. {spentAmount} spent</p>

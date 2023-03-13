@@ -26,6 +26,7 @@ const BudgetForm = ({ addBudget }) => {
 
         if (budgetName.trim() !== '' && budgetAmount > 0) {
             addBudget({ bName: budgetName, bAmount: +budgetAmount, bId: uuidv4() })
+            setAccordian(prevAcc => !prevAcc)
         }
 
         setBudgetAmount('')
@@ -35,7 +36,7 @@ const BudgetForm = ({ addBudget }) => {
     }
 
     const onAccordianHandler = () => {
-        setAccordian(!accordian)
+        setAccordian(prevAcc => !prevAcc)
     }
 
 
@@ -51,8 +52,8 @@ const BudgetForm = ({ addBudget }) => {
             <Card color='g' className={styles.budget__card}>
                 <h1 className={styles.budget__form__heading}>Create Budget</h1>
                 <form onSubmit={onBudgetSubmit} className={styles.budget__form}>
-                    <input type="text" name="budget name" onChange={onBudgetNameChangeHandler} value={budgetName} placeholder="Budget Name" />
-                    <input onChange={onBudgetAmountChangeHandler} min='0' value={budgetAmount} type="number" name="budget amount" placeholder="enter budget amount" />
+                    <input type="text" name="budget name" onChange={onBudgetNameChangeHandler} value={budgetName} placeholder="Enter budget Name" />
+                    <input onChange={onBudgetAmountChangeHandler} min='0' value={budgetAmount} type="number" name="budget amount" placeholder="Enter budget amount" />
                     <button type="submit">Add Budget</button>
                 </form>
             </Card>

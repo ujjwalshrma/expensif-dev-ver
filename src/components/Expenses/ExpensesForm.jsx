@@ -26,7 +26,7 @@ const ExpensesForm = ({ addExpense, budgets }) => {
         addExpense({ eAmount: +expenseAmount, eName: expenseName, eId: uuidv4(), bId: budgetId })
 
         setExpenseName('')
-        setExpenseAmount(0)
+        setExpenseAmount('')
     }
 
     return (
@@ -35,8 +35,8 @@ const ExpensesForm = ({ addExpense, budgets }) => {
                 budgets.length > 1 ? `Add Expenses` : `Add Expense To ${budgets[0].bName}`
             }</h1>
             <form onSubmit={onExpenseSubmit} className={styles.expense__form}>
-                <input type="text" name="expense name" onChange={onExpenseNameChangeHandler} value={expenseName} placeholder="enter expense name" />
-                <input onChange={onExpenseAmountChangeHandler} value={expenseAmount} type="number" name="expense amount" placeholder="enter expense amount" />
+                <input type="text" name="expense name" onChange={onExpenseNameChangeHandler} value={expenseName} placeholder="Enter expense name" />
+                <input onChange={onExpenseAmountChangeHandler} value={expenseAmount} type="number" name="expense amount" placeholder="Enter expense amount" />
                 {budgets.length > 1 &&
                     <select value={selectedBudget} onChange={e => setSelectedBudget(e.target.value)}>
                         {

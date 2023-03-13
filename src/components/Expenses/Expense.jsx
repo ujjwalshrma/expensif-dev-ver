@@ -14,7 +14,7 @@ const Expense = ({ budget, removeExpense }) => {
             {
                 budget.expenses.map((expense) => (
                     <div className={styles.expense} key={expense.eId}>
-                        <Card key={expense.eId} className={styles.expense__card}>
+                        <Card color='p' className={styles.expense__card}>
                             <div className={styles.expense__inner__card}>
                                 <p>{expense.eName}</p>
                                 <p>-</p>

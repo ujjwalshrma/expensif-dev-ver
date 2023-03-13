@@ -32,6 +32,16 @@
 			"src": "icon512.png",
 			"sizes": "512x512",
 			"type": "image/png"
-		}
+		},
+        {
+            "src": "plus.svg",
+            "sizes": "22x22",
+            "type": "image/svg"
+        },
+        {
+            "src": "delete-icon.svg",
+            "sizes": "24x24",
+            "type": "image/svg"
+        }
 	]
 }

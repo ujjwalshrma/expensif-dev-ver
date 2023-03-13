@@ -7,7 +7,7 @@ import Card from "../UI/Card/Card";
 const BudgetForm = ({ addBudget }) => {
 
     const [budgetName, setBudgetName] = useState('')
-    const [budgetAmount, setBudgetAmount] = useState(0)
+    const [budgetAmount, setBudgetAmount] = useState('')
 
     const onBudgetNameChangeHandler = (event) => {
         setBudgetName(event.target.value)

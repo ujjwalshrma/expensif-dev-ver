@@ -37,7 +37,7 @@ function App() {
   const onDeleteUserHandler = () => {
     setUserName('')
     setIsEnteredNameValid(false)
-    localStorage.setItem('name', JSON.stringify(''))
+    localStorage.clear()
   }
 
   if (!isEnteredNameValid) {
@@ -51,7 +51,6 @@ function App() {
       <TotalExpense budgets={budgets} />
       <BudgetForm addBudget={budgetCtx.addBudget} />
       <div ref={expenseFormRef}>
-
         {
           budgets.length > 0 && (
             <ExpensesForm addExpense={budgetCtx.addExpense} budgets={budgets} />

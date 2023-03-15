@@ -1,99 +1,106 @@
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    font-weight: 500;
-    color: white;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background: #0a0a0a;
-    padding: 50px 5px;
-    margin: 0;
+  background: #0a0a0a;
+  padding: 50px 5px;
+  margin: 0;
 }
 
 input {
-    border-radius: 20px;
-    width: 95%;
-    border: 1px solid white;
-    color: white;
-    outline: none;
-    display: block;
-    padding: 10px;
-    font-size: 16px;
-    background: transparent;
+  border-radius: 20px;
+  width: 95%;
+  border: 1px solid white;
+  color: white;
+  outline: none;
+  display: block;
+  padding: 10px;
+  font-size: 16px;
+  background: transparent;
 }
 
 select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid white;
-    border-radius: 20px;
-    font-size: 16px;
-    color: black;
-    outline: none;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 20px;
+  font-size: 16px;
+  color: black;
+  outline: none;
 }
 
 option {
-    padding: 10px;
-    background: transparent;
-} 
+  padding: 10px;
+  background: transparent;
+}
 
 
 input::placeholder {
-    color: white;
+  color: white;
 }
 
 a {
-    font-weight: 500;
-    color: #646cff;
-    text-decoration: inherit;
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+.delete-btn {
+  background-color: red;
+  color: white;
+  margin-bottom: 20px;
+  margin-left: 24px;
 }
 
 h1 {
-    font-size: 22px;
-    line-height: 35px;
-    font-weight: 500;
-    margin: 0;
-    padding: 0;
+  font-size: 22px;
+  line-height: 35px;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
 }
 
 p {
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: 500px;
-    margin: 0;
-    padding: 0;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500px;
+  margin: 0;
+  padding: 0;
 }
 
 p.small {
-    font-size: 13px;
+  font-size: 13px;
 }
 
 button {
-    border-radius: 50px;
-    border: none;
-    outline: none;
-    padding: 7px 25px;
-    font-size: 16px;
-    font-weight: 500;
-    font-family: inherit;
-    background: white;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    color: black;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  padding: 7px 25px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: inherit;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: black;
 }
 
 button:active {
-    transform: scale(0.98);
-    opacity: 0.8;
+  transform: scale(0.98);
+  opacity: 0.8;
 }
 
 .user-name {
-    margin-left: 24px;
-    margin-bottom: 20px;
-    font-size: 40px;
-    line-height: 1;
-    text-transform: capitalize;
+  margin-left: 24px;
+  margin-bottom: 20px;
+  font-size: 40px;
+  line-height: 1;
+  text-transform: capitalize;
 }

@@ -17,9 +17,6 @@ const Budget = ({ budgets, removeBudget, removeExpense }) => {
 						<Card color='t' className={styles.budget__card}>
 							<div className={styles.budget__heading__wrapper}>
 								<h1>{budget.bName}</h1>
-								<div className={styles.date__wrapper}>
-									<p className='small'>{budget.bDate}</p>
-								</div>
 								<h1>Rs. {budget.bAmount}</h1>
 							</div>
 							<ProgressBar budget={budget} />

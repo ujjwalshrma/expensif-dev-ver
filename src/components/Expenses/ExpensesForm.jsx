@@ -1,55 +1,92 @@
 import styles from './ExpensesForm.module.css'
 
-import { useState } from "react"
-import { v4 as uuidv4 } from 'uuid';
+import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
-import Card from "../UI/Card/Card";
+import Card from '../UI/Card/Card'
+
+import { MONTHS } from '../lib/date'
 
 const ExpensesForm = ({ addExpense, budgets }) => {
-    const [expenseName, setExpenseName] = useState('')
-    const [expenseAmount, setExpenseAmount] = useState('')
+	const date = new Date()
 
-    const [selectedBudget, setSelectedBudget] = useState('')
+	const eDate = `${date.getDate()} ${
+		MONTHS[date.getMonth()]
+	} ${date.getFullYear()}`
 
-    const onExpenseNameChangeHandler = (event) => {
-        setExpenseName(event.target.value)
-    }
+	const [expenseName, setExpenseName] = useState('')
+	const [expenseAmount, setExpenseAmount] = useState('')
 
-    const onExpenseAmountChangeHandler = (event) => {
-        setExpenseAmount(event.target.value)
-    }
+	const [selectedBudget, setSelectedBudget] = useState('')
 
-    function onExpenseSubmit(event) {
-        event.preventDefault()
+	const onExpenseNameChangeHandler = (event) => {
+		setExpenseName(event.target.value)
+	}
 
-        const budgetId = selectedBudget ? selectedBudget : budgets[0].bId
-        addExpense({ eAmount: +expenseAmount, eName: expenseName, eId: uuidv4(), bId: budgetId })
+	const onExpenseAmountChangeHandler = (event) => {
+		setExpenseAmount(event.target.value)
+	}
 
-        setExpenseName('')
-        setExpenseAmount('')
-    }
+	function onExpenseSubmit(event) {
+		event.preventDefault()
 
-    return (
-        <Card color="r" className={styles.expense__card}>
-            <h1 className={styles.expense__form__heading}>{
-                budgets.length > 1 ? `Add Expenses` : `Add Expense To ${budgets[0].bName}`
-            }</h1>
-            <form onSubmit={onExpenseSubmit} className={styles.expense__form}>
-                <input type="text" name="expense name" onChange={onExpenseNameChangeHandler} value={expenseName} placeholder="Enter expense name" />
-                <input onChange={onExpenseAmountChangeHandler} value={expenseAmount} type="number" name="expense amount" placeholder="Enter expense amount" />
-                {budgets.length > 1 &&
-                    <select value={selectedBudget} onChange={e => setSelectedBudget(e.target.value)}>
-                        {
-                            budgets.map(budget => {
-                                return <option className={styles.budget__option} key={budget.bId} value={budget.bId}>{budget.bName}</option>
-                            })
-                        }
-                    </select>
-                }
-                <button type="submit">Add Expense</button>
-            </form>
-        </Card>
-    )
+		const budgetId = selectedBudget ? selectedBudget : budgets[0].bId
+		addExpense({
+			eAmount: +expenseAmount,
+			eName: expenseName,
+			eId: uuidv4(),
+			bId: budgetId,
+			eDate: eDate,
+		})
+
+		setExpenseName('')
+		setExpenseAmount('')
+	}
+
+	return (
+		<Card color='r' className={styles.expense__card}>
+			<h1 className={styles.expense__form__heading}>
+				{budgets.length > 1
+					? `Add Expenses`
+					: `Add Expense To ${budgets[0].bName}`}
+			</h1>
+			<form onSubmit={onExpenseSubmit} className={styles.expense__form}>
+				<input
+					type='text'
+					name='expense name'
+					onChange={onExpenseNameChangeHandler}
+					value={expenseName}
+					placeholder='Enter expense name'
+				/>
+				<input
+					onChange={onExpenseAmountChangeHandler}
+					value={expenseAmount}
+					type='number'
+					name='expense amount'
+					placeholder='Enter expense amount'
+				/>
+				{budgets.length > 1 && (
+					<select
+						value={selectedBudget}
+						onChange={(e) => setSelectedBudget(e.target.value)}
+					>
+						{budgets.map((budget) => {
+							return (
+								<option
+									className={styles.budget__option}
+									key={budget.bId}
+									value={budget.bId}
+								>
+									{budget.bName}
+								</option>
+							)
+						})}
+					</select>
+				)}
+				<button type='submit'>Add Expense</button>
+			</form>
+		</Card>
+	)
 }
 
 export default ExpensesForm

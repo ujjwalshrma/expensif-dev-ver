@@ -1,64 +1,91 @@
 import styles from './BudgetForm.module.css'
-import { useState } from "react"
-import { v4 as uuidv4 } from 'uuid';
+import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
-import Card from "../UI/Card/Card";
+import Card from '../UI/Card/Card'
 
 import plus from '../../../public/plus.svg'
 
+import { MONTHS } from '../lib/date'
+
 const BudgetForm = ({ addBudget }) => {
+	const date = new Date()
 
-    const [budgetName, setBudgetName] = useState('')
-    const [budgetAmount, setBudgetAmount] = useState('')
+	const bDate = `${date.getDate()} ${
+		MONTHS[date.getMonth()]
+	} ${date.getFullYear()}`
 
-    const [accordian, setAccordian] = useState(false)
+	const [budgetName, setBudgetName] = useState('')
+	const [budgetAmount, setBudgetAmount] = useState('')
 
-    const onBudgetNameChangeHandler = (event) => {
-        setBudgetName(event.target.value)
-    }
+	const [accordian, setAccordian] = useState(false)
 
-    const onBudgetAmountChangeHandler = (event) => {
-        setBudgetAmount(event.target.value)
-    }
+	const onBudgetNameChangeHandler = (event) => {
+		setBudgetName(event.target.value)
+	}
 
-    function onBudgetSubmit(event) {
-        event.preventDefault()
+	const onBudgetAmountChangeHandler = (event) => {
+		setBudgetAmount(event.target.value)
+	}
 
-        if (budgetName.trim() !== '' && budgetAmount > 0) {
-            addBudget({ bName: budgetName, bAmount: +budgetAmount, bId: uuidv4() })
-            setAccordian(prevAcc => !prevAcc)
-        }
+	function onBudgetSubmit(event) {
+		event.preventDefault()
 
-        setBudgetAmount('')
-        setBudgetName('')
+		if (budgetName.trim() !== '' && budgetAmount > 0) {
+			addBudget({
+				bName: budgetName,
+				bAmount: +budgetAmount,
+				bId: uuidv4(),
+				bDate: bDate,
+			})
+			setAccordian((prevAcc) => !prevAcc)
+		}
 
-        return
-    }
+		setBudgetAmount('')
+		setBudgetName('')
 
-    const onAccordianHandler = () => {
-        setAccordian(prevAcc => !prevAcc)
-    }
+		return
+	}
 
+	const onAccordianHandler = () => {
+		setAccordian((prevAcc) => !prevAcc)
+	}
 
-    const plugIconClass = `${styles.plus} ${accordian ? styles.open : ''}`
-    const accordianClass = `${styles.accordian} ${accordian ? styles.open : ''}`
+	const plugIconClass = `${styles.plus} ${accordian ? styles.open : ''}`
+	const accordianClass = `${styles.accordian} ${accordian ? styles.open : ''}`
 
-    return (
-        <div className={accordianClass}>
-            <div onClick={onAccordianHandler} className={styles.accordian__header}>
-                <h1>Create Budget</h1>
-                <img className={plugIconClass} src={plus} alt="Plus Icon" />
-            </div>
-            <Card color='g' className={styles.budget__card}>
-                <h1 className={styles.budget__form__heading}>Create Budget</h1>
-                <form onSubmit={onBudgetSubmit} className={styles.budget__form}>
-                    <input type="text" name="budget name" onChange={onBudgetNameChangeHandler} value={budgetName} placeholder="Enter budget Name" />
-                    <input onChange={onBudgetAmountChangeHandler} min='0' value={budgetAmount} type="number" name="budget amount" placeholder="Enter budget amount" />
-                    <button type="submit">Add Budget</button>
-                </form>
-            </Card>
-        </div>
-    )
+	return (
+		<div className={accordianClass}>
+			<div
+				onClick={onAccordianHandler}
+				className={styles.accordian__header}
+			>
+				<h1>Create Budget</h1>
+				<img className={plugIconClass} src={plus} alt='Plus Icon' />
+			</div>
+			<Card color='g' className={styles.budget__card}>
+				<h1 className={styles.budget__form__heading}>Create Budget</h1>
+				<form onSubmit={onBudgetSubmit} className={styles.budget__form}>
+					<input
+						type='text'
+						name='budget name'
+						onChange={onBudgetNameChangeHandler}
+						value={budgetName}
+						placeholder='Enter budget Name'
+					/>
+					<input
+						onChange={onBudgetAmountChangeHandler}
+						min='0'
+						value={budgetAmount}
+						type='number'
+						name='budget amount'
+						placeholder='Enter budget amount'
+					/>
+					<button type='submit'>Add Budget</button>
+				</form>
+			</Card>
+		</div>
+	)
 }
 
 export default BudgetForm

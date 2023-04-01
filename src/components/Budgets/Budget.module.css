@@ -1,19 +1,32 @@
 .budget__card {
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+	margin-top: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 }
 
 .budget__heading__wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	margin-bottom: 15px;
 }
 
 .remove__budget__btn {
-    margin-top: 20px;
+	margin-top: 20px;
+}
+
+.date__wrapper {
+	padding: 5px 10px;
+	background: linear-gradient(
+		118.33deg,
+		#1612dd 0%,
+		#2c4cbb 37.5%,
+		#4029d3 64.58%,
+		#161499 100%
+	);
+
+	border-radius: 20px;
 }

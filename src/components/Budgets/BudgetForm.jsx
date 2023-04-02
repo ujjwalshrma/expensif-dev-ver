@@ -6,14 +6,17 @@ import Card from '../UI/Card/Card'
 
 import plus from '../../../public/plus.svg'
 
-import { MONTHS } from '../lib/date'
+// import { MONTHS } from '../lib/date'
+
+import useDate from '../../hooks/useDate'
 
 const BudgetForm = ({ addBudget }) => {
-	const date = new Date()
+	const bDate = useDate()
+	// const date = new Date()
 
-	const bDate = `${date.getDate()} ${
-		MONTHS[date.getMonth()]
-	} ${date.getFullYear()}`
+	// const bDate = `${date.getDate()} ${
+	// 	MONTHS[date.getMonth()]
+	// } ${date.getFullYear()}`
 
 	const [budgetName, setBudgetName] = useState('')
 	const [budgetAmount, setBudgetAmount] = useState('')

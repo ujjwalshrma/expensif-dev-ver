@@ -5,7 +5,13 @@ import { v4 as uuidv4 } from 'uuid'
 
 import Card from '../UI/Card/Card'
 
+import useDate from '../../hooks/useDate'
+
 const ExpensesForm = ({ addExpense, budgets }) => {
+	const eDate = useDate()
+
+	console.log(eDate)
+
 	const [expenseName, setExpenseName] = useState('')
 	const [expenseAmount, setExpenseAmount] = useState('')
 
@@ -28,6 +34,7 @@ const ExpensesForm = ({ addExpense, budgets }) => {
 			eName: expenseName,
 			eId: uuidv4(),
 			bId: budgetId,
+			eDate: eDate,
 		})
 
 		setExpenseName('')

@@ -59,7 +59,7 @@ function App() {
 			<button className='delete-btn' onClick={onDeleteUserHandler}>
 				Delete User
 			</button>
-			<TotalExpense budgets={budgets} />
+			<TotalExpense curMonth={curMonth} budgets={budgets} />
 			<SortButton initialMonth={initialMonth} getCurMonth={getCurMonth} />
 			<BudgetForm addBudget={budgetCtx.addBudget} />
 			<div ref={expenseFormRef}>

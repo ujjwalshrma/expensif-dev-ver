@@ -12,12 +12,21 @@ import Budget from './components/Budgets/Budget'
 //expenses components
 import ExpensesForm from './components/Expenses/ExpensesForm'
 
+//sort component
+import SortButton from './components/Sort/SortButton'
+
 //auto animate
 import { useAutoAnimate } from '@formkit/auto-animate/react'
+
+import { MONTHS } from './components/lib/date'
 
 function App() {
 	const [isEnteredNameValid, setIsEnteredNameValid] = useState(false)
 	const [userName, setUserName] = useState('')
+
+	const initialMonth = MONTHS[new Date().getMonth()]
+
+	const [curMonth, getCurMonth] = useState(initialMonth)
 
 	const budgetCtx = useContext(budgetContext)
 	const budgets = budgetCtx.budgets
@@ -51,6 +60,7 @@ function App() {
 				Delete User
 			</button>
 			<TotalExpense budgets={budgets} />
+			<SortButton initialMonth={initialMonth} getCurMonth={getCurMonth} />
 			<BudgetForm addBudget={budgetCtx.addBudget} />
 			<div ref={expenseFormRef}>
 				{budgets.length > 0 && (
@@ -61,6 +71,7 @@ function App() {
 				)}
 			</div>
 			<Budget
+				curMonth={curMonth}
 				budgets={budgets}
 				removeBudget={budgetCtx.removeBudget}
 				removeExpense={budgetCtx.removeExpense}

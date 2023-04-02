@@ -5,15 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import Card from '../UI/Card/Card'
 
-import { MONTHS } from '../lib/date'
-
 const ExpensesForm = ({ addExpense, budgets }) => {
-	const date = new Date()
-
-	const eDate = `${date.getDate()} ${
-		MONTHS[date.getMonth()]
-	} ${date.getFullYear()}`
-
 	const [expenseName, setExpenseName] = useState('')
 	const [expenseAmount, setExpenseAmount] = useState('')
 
@@ -36,7 +28,6 @@ const ExpensesForm = ({ addExpense, budgets }) => {
 			eName: expenseName,
 			eId: uuidv4(),
 			bId: budgetId,
-			eDate: eDate,
 		})
 
 		setExpenseName('')

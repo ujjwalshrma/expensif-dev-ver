@@ -8,6 +8,7 @@ export const budgetReducer = (state, action) => {
 				bName: action.payload.bName,
 				bAmount: action.payload.bAmount,
 				bId: action.payload.bId,
+				bDate: action.payload.bDate,
 				expenses: [],
 			},
 		]
@@ -28,7 +29,6 @@ export const budgetReducer = (state, action) => {
 				eName: action.payload.eName,
 				eAmount: action.payload.eAmount,
 				eId: action.payload.eId,
-				eDate: action.payload.eDate,
 			},
 			...state[oldBudgetIndex].expenses,
 		]

@@ -6,7 +6,15 @@ import Card from '../UI/Card/Card'
 
 import plus from '../../../public/plus.svg'
 
+import { MONTHS } from '../lib/date'
+
 const BudgetForm = ({ addBudget }) => {
+	const date = new Date()
+
+	const bDate = `${date.getDate()} ${
+		MONTHS[date.getMonth()]
+	} ${date.getFullYear()}`
+
 	const [budgetName, setBudgetName] = useState('')
 	const [budgetAmount, setBudgetAmount] = useState('')
 
@@ -28,6 +36,7 @@ const BudgetForm = ({ addBudget }) => {
 				bName: budgetName,
 				bAmount: +budgetAmount,
 				bId: uuidv4(),
+				bDate: bDate,
 			})
 			setAccordian((prevAcc) => !prevAcc)
 		}
